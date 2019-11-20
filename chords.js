@@ -247,7 +247,7 @@ var middleTextBottom = textCenter.append("text")
 //////////////////////////////////////////////////////////*/
 
 var counter = 0,
-	buttonTexts = ["Pincha aquí", " Siguiente ", " Siguiente ", " Siguiente ", " Fin "],
+	buttonTexts = ["Haga clic", " Siguiente ", " Siguiente ", " Siguiente ", " Fin "],
 	opacityValueBase = 0.8,
 	opacityValue = 0.4;
 
@@ -358,7 +358,7 @@ function Draw2(){
 		.attr("opacity", function (d, i) { return (d.index == 0 || d.index == 1) ? 1  : 0; });
 	  
 	/*Switch  text*/
-	changeTopText(newText = "Dos países han iniciado cinco disputas.",
+	changeTopText(newText = "Dos países han iniciado cinco diferencias.",
 	loc = 1/2, delayDisappear = 0, delayAppear = 1, finalText = true);
 	
     changeBottomText(newText = "",
@@ -408,10 +408,10 @@ function Draw3(){
 
 	/*Change the text of the top section inside the circle accordingly*/
 	/*between 1 and 5 disputes*/
-	changeTopText(newText = "Otros países han iniciado entre una y cuatro disputas.",
+	changeTopText(newText = "Otros países han iniciado entre una y cuatro diferencias.",
         loc = 1/2, delayDisappear = 0, delayAppear = 1);
 	/*0 disputes*/
-	changeTopText(newText = "Ocho países que están respondiendo a disputas no han iniciado disputas ellos mismos.",
+	changeTopText(newText = "Ocho países que están respondiendo a diferencias no han iniciado diferencias ellos mismos.",
 		loc = 1 / 2, delayDisappear = (arcDelay[22] - 1), delayAppear = arcDelay[22], finalText = true);
     /*0 dispute%*/
     //changeTopText(newText = "8 countries are just responding to disputes but haven't issued any",
@@ -579,8 +579,8 @@ function Draw8(){
 	/*Show and run the progressBar*/
 	runProgressBar(time=700*2);	
 	
-	changeTopText(newText = "En disputas bilaterales, la cinta toma el color del país que ha iniciado más disputas.",
-		loc = 2/2, delayDisappear = 0, delayAppear = 1, finalText = true);
+	changeTopText(newText = "En diferencias bilaterales, la cinta toma el color del país que ha iniciado más diferencias.",
+		loc = 3/2, delayDisappear = 0, delayAppear = 1, finalText = true);
 		
 	/*Remove the Nokia arc*/
 	d3.selectAll(".NokiaLoyalArc")
@@ -589,8 +589,8 @@ function Draw8(){
         .each("end", function() {d3.selectAll(".NokiaLoyalArc").remove();});
     
 
-	changeBottomText(newText = "Pincha en \"Fin\" y desplace el cursor sobre el borde del círculo para ver los detalles país por país.",
-		loc = 10/4 , delayDisappear = 0, delayAppear = 1);
+	changeBottomText(newText = "Haga clic en \"Fin\" y desplace el cursor sobre el borde del círculo para ver los detalles país por país.",
+		loc = 7/4 , delayDisappear = 0, delayAppear = 1);
 			
 	/*Only show the chords of Apple*/
 	chords.transition().duration(2000)
