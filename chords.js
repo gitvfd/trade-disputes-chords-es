@@ -2,7 +2,7 @@
 ////////////////// Set up the Data /////////////////////////
 //////////////////////////////////////////////////////////*/
 
-var NameProvider = ["United States", "China", "EU", "Russia", "Ukraine", "Canada", "Japan", "Korea", "Tunisia", "Turkey", "Argentina", "Brazil", "Chinese Taipei", "India", "Indonesia", "Mexico", "Norway", "Switzerland", "Thailand", "UAE", "Venezuela", "Viet Nam", "Armenia", "Australia", "Costa Rica", "Kazakhstan", "Kyrgyz Rep.", "Morocco", "Pakistan", "Peru"];
+var NameProvider = ["Estados Unidos", "China", "UE", "Rusia", "Ucrania", "Canadá", "Japón", "Corea", "Túnez", "Turquía", "Argentina", "Brasil", "Taipei Chino", "India", "Indonesia", "México", "Noruega", "Suiza", "Tailandia", "EÁU", "Venezuela", "Vietnam", "Armenia", "Australia", "Costa Rica", "Kazajstán", "Kirguizistán", "Marruecos", "Pakistán", "Perú"];
 	
 var matrix = [
     [0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -53,7 +53,7 @@ var fill = d3.scale.ordinal()
 var margin = {top: 30, right: 25, bottom: 10, left: 25},
     width =700 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom,
-    innerRadius = Math.min(width, height) * .39,
+    innerRadius = Math.min(width, height) * .36,
     outerRadius = innerRadius * 1.04;
 
 /*Initiate the SVG*/
@@ -247,7 +247,7 @@ var middleTextBottom = textCenter.append("text")
 //////////////////////////////////////////////////////////*/
 
 var counter = 0,
-	buttonTexts = ["Click to start", "Next", "Next", "Next", "Next", "Next", "Next", "Finish"],
+	buttonTexts = ["Pincha aquí", " Siguiente ", " Siguiente ", " Siguiente ", " Fin "],
 	opacityValueBase = 0.8,
 	opacityValue = 0.4;
 
@@ -265,11 +265,11 @@ d3.select("#clicker")
 		if (counter == 0) DrawInit();
 		else if(counter == 1) Draw2(); // intro explanation
 		else if(counter == 2) Draw3(); // OK -- drawing one line ie US
-        else if (counter == 3) Draw4(); // OK -- Drawing all the other lines
-        else if (counter == 4) Draw5(); // OK -- highlighting one arc
-        else if (counter == 5) Draw6(); // OK -- explaining one end of the highlighted arc
-        else if (counter == 6) Draw8(); // OK -- explaining second end of the highlighted arc
-		else if (counter == 7) finalChord(); // OK -- overall arc explanation
+       // else if (counter == 3) Draw4(); // OK -- Drawing all the other lines
+        //else if (counter == 4) Draw5(); // OK -- highlighting one arc
+        //else if (counter == 5) Draw6(); // OK -- explaining one end of the highlighted arc
+        else if (counter == 3) Draw8(); // OK -- explaining second end of the highlighted arc
+		else if (counter == 4) finalChord(); // OK -- overall arc explanation
 		
 		counter = counter + 1;
 	});
@@ -304,7 +304,7 @@ function DrawInit(){
 		.transition().duration(700)
 		.attr("opacity", 0);
 
-	changeTopText(newText = "This infographic presents a breakdown of outstanding tariff and trade restriction complaints to the WTO since 2017.",
+	changeTopText(newText = "Esta infografía detalla las quejas continuas sobre restricciones arancelarias y comerciales iniciadas en la OMC desde 2017.",
 		loc = 1 / 2, delayDisappear = 0, delayAppear = 1, finalText = true);
 
 
@@ -358,7 +358,7 @@ function Draw2(){
 		.attr("opacity", function (d, i) { return (d.index == 0 || d.index == 1) ? 1  : 0; });
 	  
 	/*Switch  text*/
-	changeTopText(newText = "These two countries are involved into five disputes.",
+	changeTopText(newText = "Dos países han iniciado cinco disputas.",
 	loc = 1/2, delayDisappear = 0, delayAppear = 1, finalText = true);
 	
     changeBottomText(newText = "",
@@ -408,10 +408,10 @@ function Draw3(){
 
 	/*Change the text of the top section inside the circle accordingly*/
 	/*between 1 and 5 disputes*/
-	changeTopText(newText = "Other countries have initiated between one and four disputes.",
+	changeTopText(newText = "Otros países han iniciado entre una y cuatro disputas.",
         loc = 1/2, delayDisappear = 0, delayAppear = 1);
 	/*0 disputes*/
-	changeTopText(newText = "Eight countries are just responding to disputes but have not issued any.",
+	changeTopText(newText = "Ocho países que están respondiendo a disputas no han iniciado disputas ellos mismos.",
 		loc = 1 / 2, delayDisappear = (arcDelay[22] - 1), delayAppear = arcDelay[22], finalText = true);
     /*0 dispute%*/
     //changeTopText(newText = "8 countries are just responding to disputes but haven't issued any",
@@ -579,8 +579,8 @@ function Draw8(){
 	/*Show and run the progressBar*/
 	runProgressBar(time=700*2);	
 	
-	changeTopText(newText = "These are all the chords for disputes involving one country as complainant or respondent.",
-		loc = 3/2, delayDisappear = 0, delayAppear = 1, finalText = true);
+	changeTopText(newText = "En disputas bilaterales, la cinta toma el color del país que ha iniciado más disputas.",
+		loc = 2/2, delayDisappear = 0, delayAppear = 1, finalText = true);
 		
 	/*Remove the Nokia arc*/
 	d3.selectAll(".NokiaLoyalArc")
@@ -589,7 +589,7 @@ function Draw8(){
         .each("end", function() {d3.selectAll(".NokiaLoyalArc").remove();});
     
 
-	changeBottomText(newText = "Click \"Finish\" and hover over the border of the circle to get more details.",
+	changeBottomText(newText = "Pincha en \"Fin\" y desplace el cursor sobre el borde del círculo para ver los detalles país por país.",
 		loc = 10/4 , delayDisappear = 0, delayAppear = 1);
 			
 	/*Only show the chords of Apple*/
